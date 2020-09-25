@@ -1,13 +1,7 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Card, CardBody, CardTitle, CardText, CardImg } from 'reactstrap';
 
-class DishDetail extends Component {
-
-	// componentDidMount() {
-	// 	this.setState({ selDish: this.props.selectedDish });
-	// }
-
-	renderDish(dish) {
+	function renderDish(dish) {
 		if (dish != null)
 			return (
 				<div key={dish.id} className="col-12 col-md-5 m-1">
@@ -23,7 +17,7 @@ class DishDetail extends Component {
 		else return (<div />);
 	}
 
-	renderComments(comments) {
+	function renderComments(comments) {
 		if (comments != null) {
 			let options = { year: "numeric", month: "short", day: "numeric" };
 			const comment = comments.map((comm) => {
@@ -49,18 +43,18 @@ class DishDetail extends Component {
 		else return (<div />);
 	}
 
-	render() {
-		if (this.props.selectedDish != null) {
+	const DishDetail = (props) => {
+		if (props.selectedDish != null) {
 
 			// const dishDetail = this.props.selectedDish.map((dish) => { -->MAP ONLY WORKS FOR ARRAYS
 
-			var dish = this.props.selectedDish;
+			var dish = props.selectedDish;
 			return (
 				<div className="row">
 
-					{this.renderDish(dish)}
+					{renderDish(dish)}
 
-					{this.renderComments(dish.comments)}
+					{renderComments(dish.comments)}
 
 				</div>
 			);
@@ -69,7 +63,5 @@ class DishDetail extends Component {
 			<div />
 		);
 	}
-
-}
 
 export default DishDetail;
