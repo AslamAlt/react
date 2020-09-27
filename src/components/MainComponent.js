@@ -52,9 +52,9 @@ class Main extends Component {
 
 				<Switch>
 					<Route path='/home' component={HomePage}></Route>
-					<Route path='/menu' component={ () => <Menu dishes={this.props.dishes} onClick={(dishId) => this.onDishSelect(dishId)}/> } ></Route>
-					<Route path='/aboutus' component={() => <About leaders={this.props.leaders}/>} />
+					<Route exact path='/menu' component={ () => <Menu dishes={this.props.dishes} onClick={(dishId) => this.onDishSelect(dishId)}/> } ></Route>
 					<Route path='/menu/:dishId' component={DishWithId} />
+					<Route path='/aboutus' component={() => <About leaders={this.props.leaders}/>} />
 					<Route path='/contactus' component={Contact} />
 					<Redirect to='/home'></Redirect>
 				</Switch>

@@ -1,8 +1,26 @@
-import React from 'react';
-import { Card, CardBody, CardTitle, CardText, CardImg, Breadcrumb, BreadcrumbItem } from 'reactstrap';
+import React, { Component } from 'react';
+import { Card, CardBody, CardTitle, CardText, CardImg, Breadcrumb, BreadcrumbItem, Label, Modal, ModalHeader, ModalBody, Row, Col } from 'reactstrap';
 import { Link } from 'react-router-dom';
+import CommentForm from './CommentFormComponent';
+import { Control, Errors, LocalForm } from "react-redux-form";
 
-function renderDish(dish) {
+const required = val => val && val.length;
+const maxLength = (len) => (val) => !(val) || (val.length <= len);
+const minLength = (len) => (val) => val && (val.length >= len);
+
+class DishDetail extends Component {
+
+	constructor(props) {
+		super(props);
+
+		// this.state = {
+		// 	isCommentModal: false
+		// };
+
+		// this.toggleCommentModal = this.toggleCommentModal.bind(this);
+	}
+
+ renderDish(dish) {
 	if (dish != null)
 		return (
 			<div key={dish.id} className="col-12 col-md-5 m-1">
@@ -18,7 +36,7 @@ function renderDish(dish) {
 	else return (<div />);
 }
 
-function renderComments(comments) {
+ renderComments(comments) {
 	if (comments != null) {
 		let options = { year: "numeric", month: "short", day: "numeric" };
 		const comment = comments.map((comm) => {
@@ -38,37 +56,42 @@ function renderComments(comments) {
 			<div className="col-12 col-md-5 m-1">
 				<h4>Comments</h4>
 				{comment}
+				<CommentForm />
 			</div>
 		);
 	}
 	else return (<div />);
 }
 
-const DishDetail = (props) => {
-	if (props.selectedDish != null) {
+// toggleCommentModal() {
+// 	this.setState({ isCommentModal: !this.state.isCommentModal });
+// }
+
+ render() {
+	if (this.props.dish != null) {
 
 		// const dishDetail = this.props.selectedDish.map((dish) => { -->MAP ONLY WORKS FOR ARRAYS
-
-		var dish = props.selectedDish;
 		return (
 			<div className="container">
 				<div className="row">
 
 					<Breadcrumb>
 						<BreadcrumbItem><Link to="/menu">Menu</Link></BreadcrumbItem>
-						<BreadcrumbItem active>{props.dish.name}</BreadcrumbItem>
+						<BreadcrumbItem active>{this.props.dish.name}</BreadcrumbItem>
 					</Breadcrumb>
 
+					
+
 					<div className="col-12">
-						<h3>{props.dish.name}</h3>
+						<h3>{this.props.dish.name}</h3>
 						<hr />
 					</div>
-					
+
 				</div>
 				<div className="row">
 
-					{renderDish(dish)}
-					{renderComments(dish.comments)}
+					{this.renderDish(this.props.dish)}
+					{this.renderComments(this.props.comments)}
 
 				</div>
 
@@ -78,6 +101,7 @@ const DishDetail = (props) => {
 	else return (
 		<div />
 	);
+}
 }
 
 export default DishDetail;

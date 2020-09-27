@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Breadcrumb, BreadcrumbItem, Button, Form, FormGroup, Label, Input, Col, FormFeedback, Row } from 'reactstrap';
+import { Breadcrumb, BreadcrumbItem, Button, Label, Col, Row } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import { Control, Errors, LocalForm } from 'react-redux-form';
 
@@ -14,21 +14,7 @@ class Contact extends Component {
 	constructor(props) {
 		super(props);
 
-		this.state = {
-			firstname: '',
-			lastname: '',
-			telnum: '',
-			email: '',
-			agree: false,
-			contactType: 'Tel.',
-			message: '',
-			touched: {
-				firstname: false,
-				lastname: false,
-				telnum: false,
-				email: false
-			}
-		};
+		
 
 		this.handleSubmit = this.handleSubmit.bind(this);
 
