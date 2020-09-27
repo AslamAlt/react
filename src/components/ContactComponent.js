@@ -29,7 +29,7 @@ class Contact extends Component {
 
 	}
 
-	handleBlur = (field) => (evt) => {
+	handleBlur = (field) => (event) => {
 		this.setState({
 			touched: { ...this.state.touched, [field]: true }
 		});
@@ -109,12 +109,12 @@ class Contact extends Component {
 							<FormGroup row>
 								<Label htmlFor="firstname" md={2}>First Name</Label>
 								<Col md={10}>
-									<Input type="text" id="firstname" name="firstname"
+									<Input required type="text" id="firstname" name="firstname"
 										placeholder="First Name"
 										value={this.state.firstname}
-										valid={errors.lastname === ''}
-										invalid={errors.lastname !== ''}
-										onBlur={this.handleBlur('lastname')}
+										valid={errors.firstname === ''}
+										invalid={errors.firstname !== ''}
+										onBlur={this.handleBlur('firstname')}
 										onChange={this.handleInputChange} />
 									<FormFeedback>{errors.firstname}</FormFeedback>
 								</Col>
@@ -148,7 +148,7 @@ class Contact extends Component {
 							<FormGroup row>
 								<Label htmlFor="email" md={2}>Email</Label>
 								<Col md={10}>
-									<Input type="email" id="email" name="email"
+									<Input required type="email" id="email" name="email"
 										placeholder="Email"
 										value={this.state.email}
 										valid={errors.email === ''}
