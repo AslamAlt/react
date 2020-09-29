@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Card, CardBody, CardTitle, CardText, CardImg, Breadcrumb, BreadcrumbItem, Label, Modal, ModalHeader, ModalBody, Row, Col } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import CommentForm from './CommentFormComponent';
-import { Control, Errors, LocalForm } from "react-redux-form";
+import {Loading} from './LoadingComponent';
 
 const required = val => val && val.length;
 const maxLength = (len) => (val) => !(val) || (val.length <= len);
@@ -13,11 +13,6 @@ class DishDetail extends Component {
 	constructor(props) {
 		super(props);
 
-		// this.state = {
-		// 	isCommentModal: false
-		// };
-
-		// this.toggleCommentModal = this.toggleCommentModal.bind(this);
 	}
 
  renderDish(dish) {
@@ -63,12 +58,26 @@ class DishDetail extends Component {
 	else return (<div />);
 }
 
-// toggleCommentModal() {
-// 	this.setState({ isCommentModal: !this.state.isCommentModal });
-// }
-
  render() {
-	if (this.props.dish != null) {
+	 if(this.props.isLoading) {
+		 return(
+			 <div className="container">
+				 <div className="row">
+					 <Loading />
+				 </div>
+			 </div>
+		 );
+	 }
+	 else if(this.props.errMess) {
+		return(
+			<div className="container">
+				<div className="row">
+					<h4>{this.props.errMess}</h4>
+				</div>
+			</div>
+		);
+	}
+	else if (this.props.dish != null) {
 
 		// const dishDetail = this.props.selectedDish.map((dish) => { -->MAP ONLY WORKS FOR ARRAYS
 		return (
