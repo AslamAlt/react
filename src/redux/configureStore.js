@@ -3,7 +3,7 @@ import { COMMENTS } from "../shared/comments";
 import { DISHES } from "../shared/dishes";
 import { LEADERS } from "../shared/leaders";
 import { PROMOTIONS } from "../shared/promotions";
-import { initialState, Reducer } from "./reducer"
+// import { initialState, Reducer } from "./reducer"
 
 export const ConfigureStore = () => {
     const store = createStore(
