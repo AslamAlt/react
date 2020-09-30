@@ -1,6 +1,7 @@
 import React from 'react';
 import { Breadcrumb, BreadcrumbItem, Card, CardBody, CardHeader, Media } from 'reactstrap';
 import { Link } from 'react-router-dom';
+import { FadeTransform, Fade, Stagger } from 'react-animation-components';
 
 function RenderLeader({leader}) {
         return (
@@ -19,13 +20,14 @@ function RenderLeader({leader}) {
 
 function About(props) {
 
-    const leaders = props.leaders.map((leader) => {
+    const leaders = <Stagger in> {props.leaders.map((leader) => {
         return (
             <div className="row mb-4">
             <RenderLeader leader={leader}/>
             </div>
         );
-    });
+    })} 
+    </Stagger>
 
     return (
         <div className="container">
@@ -46,6 +48,11 @@ function About(props) {
                     <p>The restaurant traces its humble beginnings to <em>The Frying Pan</em>, a successful chain started by our CEO, Mr. Peter Pan, that featured for the first time the world's best cuisines in a pan.</p>
                 </div>
                 <div className="col-12 col-md-5">
+                <FadeTransform
+						in
+						transformProps={{
+							exitTransform: 'scale(0.5) translateY(-50%)'
+						}}>
                     <Card>
                         <CardHeader className="bg-primary text-white">Facts At a Glance</CardHeader>
                         <CardBody>
@@ -61,6 +68,7 @@ function About(props) {
                             </dl>
                         </CardBody>
                     </Card>
+                    </FadeTransform>
                 </div>
                 <div className="col-12">
                     <Card>

@@ -33,6 +33,25 @@ class Contact extends Component {
 
 		// 	);
 		// }
+		if (this.props.isLoading) {
+			return (
+				<div className="container">
+					<div className="row">
+						<Loading />
+					</div>
+				</div>
+			);
+		}
+		else if (this.props.errMess) {
+			return (
+				<div className="container">
+					<div className="row">
+						<h4>{this.props.errMess}</h4>
+					</div>
+				</div>
+			);
+		}
+		else
 
 		return (
 			<div className="container">
@@ -50,7 +69,7 @@ class Contact extends Component {
 					</div>
 					{/* {forms -> WHY DOESNT THIS WORK} */}
 					<div className="col-12 col-md-9">
-						<LocalForm onSubmit={(values) => this.handleSubmit(values)}>
+						<LocalForm onSubmit={(values) => this.props.postFeedback(values)}>
 							<Row className="form-group">
 								<Label htmlFor="firstname" md={2}>First Name</Label>
 								<Col md={10}>
