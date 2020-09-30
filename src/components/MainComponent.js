@@ -15,12 +15,12 @@ import { TransitionGroup, CSSTransition } from 'react-transition-group';
 
 const mapStateToProps = state => {
 	return {
-		dishes: state.dishes.dishes,
+		dishes: state.dishes,
 		comments: state.comments,
 		promotions: state.promotions,
 		leaders: state.leaders
-	}
-}
+	};
+};
 
 const mapDispatchToProps = dispatch => ({
 	// addComment: (dishId, rating, author, comment) => dispatch(addComment(dishId, rating, author, comment)),
