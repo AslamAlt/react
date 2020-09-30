@@ -32,7 +32,7 @@ class DishDetail extends Component {
 	else return (<div />);
 }
 
- renderComments({comments, addComment, dishId}) {
+ renderComments({comments, postComment, dishId}) {
 	if (comments != null) {
 		let options = { year: "numeric", month: "short", day: "numeric" };
 		const comment = comments.map((comm) => {
@@ -52,7 +52,7 @@ class DishDetail extends Component {
 			<div className="col-12 col-md-5 m-1">
 				<h4>Comments</h4>
 				{comment}
-				<CommentForm dishId = {dishId} addComment={addComment}/>
+				<CommentForm dishId = {dishId} postComment={postComment}/>
 			</div>
 		);
 	}
@@ -101,7 +101,7 @@ class DishDetail extends Component {
 				<div className="row">
 
 					{this.renderDish(this.props.dish)}
-					{this.renderComments(this.props.comments, this.props.addComment, this.props.dish.id)}
+					{this.renderComments(this.props.comments, this.props.postComment, this.props.dish.id)}
 
 				</div>
 
