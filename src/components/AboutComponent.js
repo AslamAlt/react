@@ -7,12 +7,12 @@ function RenderLeader({leader}) {
         return (
             <Media tag="li">
                 <Media left middle>
-                    <Media object align-self-start src={leader.image} alt={leader.name} />
+                    <Media object align-self-start src={leader?.image} alt={leader?.name} />
                 </Media>
                 <Media body className="ml-5">
-                    <Media heading className="text-left">{leader.name}</Media>
-                    <p className="text-left mb-0">{leader.designation}</p>
-                    <p className="text-left">{leader.description}</p>
+                    <Media heading className="text-left">{leader?.name}</Media>
+                    <p className="text-left mb-0">{leader?.designation}</p>
+                    <p className="text-left">{leader?.description}</p>
                 </Media>
             </Media>
         );
@@ -20,7 +20,7 @@ function RenderLeader({leader}) {
 
 function About(props) {
 
-    const leaders = <Stagger in> {props.leaders.map((leader) => {
+    const leaders = <Stagger in> {props.leaders?.leaders?.map((leader) => {
         return (
             <div className="row mb-4">
             <RenderLeader leader={leader}/>
