@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Home from "./HomeComponent";
 import Header from "./HeaderComponent";
-import { Routes, Route, useParams, Navigate } from "react-router-dom";
+import { Routes, Route, useParams } from "react-router-dom";
 import About from "./AboutComponent";
 import Menu from "./MenuComponent";
 import Contact from "./ContactComponent";
@@ -131,7 +131,6 @@ class Main extends Component {
                   />
                 }
               />
-              {/* <Navigate to="/" replace /> */}
             </Routes>
           </CSSTransition>
         </TransitionGroup>
